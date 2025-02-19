@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../features/cart/cartSlice';
 
 interface Product {
   id: number;
@@ -19,6 +21,8 @@ const ProductDetails: React.FC = () => {
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -32,9 +36,21 @@ const ProductDetails: React.FC = () => {
         setLoading(false);
       }
     };
-
     fetchProduct();
   }, [id]);
+
+  const handleAddToCart = () => {
+    if (product) {
+      dispatch(addToCart({ ...product, quantity: 1 }));
+    }
+  };
+
+  const handleBuyNow = () => {
+    if (product) {
+      dispatch(addToCart({ ...product, quantity: 1 }));
+      navigate('/cart');
+    }
+  };
 
   if (loading) {
     return (
@@ -43,7 +59,7 @@ const ProductDetails: React.FC = () => {
           <div className="spinner-border text-primary" role="status" style={{ width: '4rem', height: '4rem' }}>
             <span className="visually-hidden">Loading...</span>
           </div>
-          <p className="mt-3 fs-4 fw-semibold text-muted">🔄 Loading product details...</p>
+          <p className="mt-3 fs-4 fw-semibold text-muted">Loading....</p>
         </div>
       </div>
     );
@@ -75,14 +91,12 @@ const ProductDetails: React.FC = () => {
           <p className="fs-4 fw-semibold text-success">${product.price}</p>
           <p>⭐ {product.rating} / 5</p>
           <p>{product.description}</p>
-          <button className="carousel-cart me-2">
-          <i className="bi bi-cart-plus me-1"></i> Add to Cart
+          <button className="btn btn-primary me-2" onClick={handleAddToCart}>
+            <i className="bi bi-cart-plus me-1"></i> Add to Cart
           </button>
-
-          <button className="carousel-buy">
+          <button className="btn btn-success" onClick={handleBuyNow}>
             <i className="bi bi-credit-card me-1"></i> Buy Now
           </button>
-
         </div>
       </div>
     </div>
