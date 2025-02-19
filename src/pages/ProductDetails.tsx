@@ -50,10 +50,10 @@ const ProductDetails: React.FC = () => {
   }
 
   if (error) return <p className="text-center text-danger fs-5">{error}</p>;
-  if (!product) return <p className="text-center fs-5">🚫 Product not found.</p>;
+  if (!product) return <p className="text-center fs-5 mt-5">🚫 Product not found.</p>;
 
   return (
-    <div className="container my-5">
+    <div className="container my-5 sticky-margin">
       <div className="row">
         <div className="col-md-6">
           <img src={product.thumbnail} alt={product.title} className="img-fluid rounded shadow" />
