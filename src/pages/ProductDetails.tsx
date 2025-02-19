@@ -53,7 +53,7 @@ const ProductDetails: React.FC = () => {
   if (!product) return <p className="text-center fs-5 mt-5">🚫 Product not found.</p>;
 
   return (
-    <div className="container my-5 sticky-margin">
+    <div className="container sticky-margin">
       <div className="row">
         <div className="col-md-6">
           <img src={product.thumbnail} alt={product.title} className="img-fluid rounded shadow" />
@@ -75,11 +75,11 @@ const ProductDetails: React.FC = () => {
           <p className="fs-4 fw-semibold text-success">${product.price}</p>
           <p>⭐ {product.rating} / 5</p>
           <p>{product.description}</p>
-          <button className="carousel-btn me-2">
+          <button className="carousel-cart me-2">
           <i className="bi bi-cart-plus me-1"></i> Add to Cart
           </button>
 
-          <button className="carousel-btn">
+          <button className="carousel-buy">
             <i className="bi bi-credit-card me-1"></i> Buy Now
           </button>
 

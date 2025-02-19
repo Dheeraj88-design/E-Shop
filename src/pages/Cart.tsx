@@ -10,7 +10,7 @@ const Cart: React.FC = () => {
   const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   return (
-    <div className="container mt-4 sticky-margin">
+    <div className="container  sticky-margin">
       <h2 className="mb-4">🛒 Your Cart</h2>
       {cartItems.length === 0 ? (
         <p className="alert alert-warning">No items in the cart.</p>
