@@ -8,7 +8,7 @@ import ProductDetails from './pages/ProductDetails';
 import ScrollToTop from './components/ScrollToTop';
 
 const App: React.FC = () => (
-  <Router>
+  <Router basename="/your-repo-name"> {/* Replace 'your-repo-name' with your actual GitHub repo name */}
     <ScrollToTop />
     <Navbar />
     <Routes>
