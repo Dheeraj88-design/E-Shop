@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -8,7 +8,7 @@ import ProductDetails from './pages/ProductDetails';
 import ScrollToTop from './components/ScrollToTop';
 
 const App: React.FC = () => (
-  <Router basename="/your-repo-name"> {/* Replace 'your-repo-name' with your actual GitHub repo name */}
+  <Router>
     <ScrollToTop />
     <Navbar />
     <Routes>
